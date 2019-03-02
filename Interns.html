@@ -1,0 +1,71 @@
+
+  <div class="welcome-message">
+     <h3>MainActivity.java</h3>
+                                <p class="indent">Now add two string fields for Google API which we got from <b>API developer Console</b> and youtube video ID.
+                          youtube video ID is nothing but the part after the  v in the URL.</br></p>
+                <img src="url.png"   alt="images" width="600px" height="30px"></br></br></br>
+              <p class="indent">
+                In our, MainActivity.java extend YouTubebaseActivity and implement YoutubePlayer.OninitializedListener
+                now Press Alt+Enter(option + Enter on Mac)
+                 on the red highlighted part where we extended YouTubeBaseActivity.</br></br>
+                <h3>  The two Methods which will be implemented are<b>:</b></h3>
+
+
+                  <p class="indent"><b>1.</b><mark class="bold">onInitializationSuccess</mark>
+                          method is called when initialization was sucess.</br>
+                        </p>
+  <font  size="4" face="verdana">This method has three parameters <b>:</b></br></font>
+                    <font  size="4" face="verdana">  1.provider<b>:</b><br></font>
+                    <p  class="indent col-sm-11 col-md-12">
+                  The provider which was used to initialize the YouTubePlayer.
+                    </p>
+
+                    <font  size="4" face="verdana">  2.player <b>:</b><br></font>
+                    <p  class="indent col-sm-11 col-md-12">
+               A YouTubePlayer which can be used to control video playback in the provider.
+                    </p>
+
+
+                        <font  size="4" face="verdana">  3:wasRestored<b>:</b><br></font>
+                        <p  class="indent col-sm-11 col-md-12">
+                Whether the player was restored from a previously saved state, as part of the YouTubePlayerView restoring its state.
+                        </p>
+
+
+ <p class="indent"><b>2.</b><mark class="bold">onInitializationFailure</mark> is called when the initialization of the player fails.</br>
+
+
+ <font  size="4" face="verdana">This method has two parameters <b>:</b></br></font>
+                        <font  size="4" face="verdana">  1.provider<b>:</b><br></font>
+                        <p  class="indent col-sm-11 col-md-12">
+                          The provider which failed to initialize a YouTubePlayer.
+
+                        </p>
+
+                        <font  size="4" face="verdana">  2.error <b>:</b><br></font>
+                        <p  class="indent col-sm-11 col-md-12">
+                   A YouTubePlayer which can be used to control video playback in the provider.
+                 </p></br></br>
+
+
+
+
+                                  <font  size="4" face="Times New Roman">In the MainActivity oncreate initialize()  youtubePlayerview.
+                                     Now in onInitializationSuccess  methods we use two interfaces. </font></br></br>
+
+              <font  size="4" face="verdana">1.
+              YouTubePlayer.PlaybackEventListener<br></font>
+              <p  class="indent col-sm-11 col-md-12">This interface is invoked when there is a video playback event.</p>
+                <font  size="4" face="verdana"> 2.YouTubePlayer.PlayerStateChangeListener</font>
+                <p  class="indent col-sm-11 col-md-12">This interface is invoked when there is a change in their player state.</p>
+
+
+
+
+
+
+
+
+
+
+  </div>
