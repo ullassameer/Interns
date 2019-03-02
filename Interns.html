@@ -1,3 +1,491 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if !IE]><!--><html lang="en"><!--<![endif]-->
+<link rel="stylesheet" type="text/css" href="https://www.evenidontknow.com/Interns.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109128562-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-109128562-1');
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- title -->
+ <title>Understanding Android RecyclerView</title>
+<!-- description -->
+<meta name="description" content="In this Tutorial we will learn how to implement AsyncTask by building a simple app. "/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="thinking.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head">
+<style type="text/css">
+@import url("https://fonts.googleapis.com/css?family=Lato");
+.tooltip-style,
+.container section.welcome figure.welcome__profile-img:before,
+.container section.welcome div.welcome__profile-txt span.profile-txt__special:before {
+  background: #252525;
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  filter: drop-shadow(0 1px 5px rgba(37,37,37,0.5));
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container section.welcome {
+  max-width: 100px;
+margin-left: 10px;
+  padding: 0 10px;
+}
+.container section.welcome figure.welcome__profile-img {
+  float: left;
+  border-radius: 50%;
+  shape-outside: circle();
+  margin: 2rem;
+  position: relative;
+}
+.container section.welcome figure.welcome__profile-img:before {
+  content: 'Interns!';
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.22, -0.3, 0.68, 1.44);
+}
+.container section.welcome figure.welcome__profile-img:hover:before {
+  top: -35px;
+  opacity: 1;
+}
+.container section.welcome figure.welcome__profile-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  filter: drop-shadow(0 1px 5px rgba(37,37,37,0.5));
+}
+/*profile-image2*/
+.tooltip-style,
+.container section.welcome figure.welcome__profile-img1:before,
+.container section.welcome div.welcome__profile-txt span.profile-txt__special:before {
+  background: #252525;
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  filter: drop-shadow(0 1px 5px rgba(37,37,37,0.5));
+}
+.container section.welcome figure.welcome__profile-img1 {
+  float: left;
+  border-radius: 50%;
+  shape-outside: circle();
+  margin: 2rem;
+  position: relative;
+}
+.container section.welcome figure.welcome__profile-img1:before {
+  content: 'Interns!';
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.22, -0.3, 0.68, 1.44);
+}
+.container section.welcome figure.welcome__profile-img1:hover:before {
+  top: -35px;
+  opacity: 1;
+}
+.container section.welcome figure.welcome__profile-img1 img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 45px;
+
+  filter: drop-shadow(0 1px 5px rgba(37,37,37,0.5));
+}
+
+
+/*main-image2*/
+.main-image2{
+  height: 100px; width: 400px; 
+   margin-left: 160px;
+
+}
+/*page images*/
+@media (min-width: 1600px) {
+  .main-image2 {
+margin-top: 0px;
+margin-left: 170px ;
+height: 100px; width: 400px; 
+  
+  }
+}
+
+@media (max-width: 1500px) {
+  .main-image2 {
+margin-top: 0px;
+margin-left: 170px ;
+height: 100px; width: 500px; 
+
+  }
+}
+@media (max-width: 1057px) {
+  .main-image2 {
+margin-top: 20px;
+margin-left: 100px;
+ height: 100px; width: 500px; 
+  }
+}
+
+@media (max-width: 807px) {
+  .main-image2 {
+margin-left: 20px;
+ height: 100px; width: 450px; 
+  }
+}
+
+@media (max-width: 806px) {
+  .main-image2 {
+margin-left: 20px;
+ height: 100px; width: 450px; 
+  }
+}
+@media (max-width: 613px) {
+  .main-image2 {
+margin-left: 0px;
+ height: 100px; width: 450px; 
+  }
+}
+@media (max-width: 490px) {
+  .main-image2 {
+    margin-top: 0px;
+margin-left: 0px;
+ height: 90px; width: 370px; 
+  }
+}
+@media (max-width: 375px) {
+  .main-image2 {
+    margin-top: 0px;
+margin-left: 0px;
+ height: 80px; width: 300px; 
+  }
+}
+
+/*main-image1*/
+.main-image1{
+  height: 300px; width: 600px; 
+   margin-left: 160px;
+
+}
+/*page images*/
+@media (min-width: 1600px) {
+  .main-image1 {
+margin-top: 0px;
+margin-left: 170px ;
+height: 300px; width: 600px; 
+  
+  }
+}
+
+@media (max-width: 1500px) {
+  .main-image1 {
+margin-top: 0px;
+margin-left: 170px ;
+height: 300px; width: 600px; 
+
+  }
+}
+@media (max-width: 1057px) {
+  .main-image1 {
+margin-top: 0px;
+margin-left: 70px;
+ height: 300px; width: 600px; 
+  }
+}
+
+@media (max-width: 807px) {
+  .main-image1 {
+margin-left: 0px;
+ height: 300px; width: 400px; 
+  }
+}
+
+@media (max-width: 806px) {
+  .main-image1 {
+margin-left: 0px;
+ height: 300px; width: 550px; 
+  }
+}
+@media (max-width: 613px) {
+  .main-image1 {
+margin-left: 0px;
+ height: 300px; width: 450px; 
+  }
+}
+@media (max-width: 490px) {
+  .main-image1 {
+    margin-top: 0px;
+margin-left: 0px;
+ height: 200px; width: 340px; 
+  }
+}
+@media (max-width: 375px) {
+  .main-image1 {
+    margin-top: 0px;
+margin-left: 0px;
+ height: 200px; width: 310px; 
+  }
+}
+
+/*image-author*/
+
+@media (min-width: 900px) {
+  .image-author {
+   display: none !important;
+  padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .welcome__profile-img {
+display:  none !important;
+  }
+}
+</style>
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<body  >
+ 
+ 
+ <div class="overlay">
+    <div class="icon"></div>
+
+  </div>
+
+
+  <nav>
+
+    <div class="after"></div>
+
+
+
+<div id="thirdApp">
+
+    <a href="donate-us-evenidontknow.html" class="wishlist"><b>Donate US</b></a>
+
+
+    <div class="menu-container" >
+      <div class="show-entries-hover hidden"></div>
+      <ul ng-controller="ThirdController" >
+        <li >
+          <a href="{{ navurl }}" >
+
+            <span class="menu-entry-text"><b>{{ navname }}</b></span>
+          </a>
+        </li>
+        <li id="apps">
+          <a href="{{ navurl2 }}">
+
+            <span class="menu-entry-text"><b>{{ navname2 }}</b></span>
+          </a>
+
+        </li>
+        <li id="movies">
+          <a href="{{ navurl3 }}">
+
+            <span class="menu-entry-text"><b>{{ navname3 }}</b></span>
+          </a>
+
+        </li>
+
+         <li id="movies">
+          <a href="{{ navurl5 }}">
+
+            <span class="menu-entry-text"><b>{{ navname5 }}</b></span>
+          </a>
+
+        </li>
+         <li id="music">
+          <a href="{{ navurl10 }}">
+
+            <span class="menu-entry-text"><b>{{ navname10 }}</b></span>
+          </a>
+
+        </li>
+          <li id="devices">
+          <a href="#"
+ onclick="changeCSS('nightmode.css', 0); pictureChangetwo()">
+       
+
+           <b> <span class="menu-entry-text">Dark Theme</span></b>
+          </a>
+
+          
+        </li>
+           <li id="devices">
+    <a   href="#" onclick="changeCSS('navandfotter.css',0); pictureChange() ">
+
+          <b>  <span class="menu-entry-text">Day Theme</span></b>
+          </a>
+
+          
+
+        </li>
+
+      </ul>
+    </div>
+
+  </nav>
+  <div class="topnav nav-down">
+    <div class="after"></div>
+    <span class="menu-button"></span>
+    <script>
+function pictureChange()
+{
+document.getElementById("theImage").src="logo.svg";
+}
+</script>
+
+<script>
+function pictureChangetwo()
+{
+document.getElementById("theImage").src="logo-white-eidk.svg";
+
+}
+</script>
+
+
+   <a href="Android-Tutorials-Eidk.html" ><img  id="theImage" class="logo plus " src="logo.svg" width="210"   >
+</a>
+
+
+
+  </div>
+
+  <div class="topnav-padding"></div>
+
+                        
+
+<div class="course-view page-content-container" id="course-container">
+
+                    
+
+    <div class="page-content">
+
+        <div class="page-content-main"><br><br>
+              <iframe " class="main-tube" src="https://www.youtube.com/embed/VecnjLDaNqk"></iframe>
+               <div class="message-bolt  " >
+                <!-- Main Title -->
+<h1 class="first">  Working with frameworks </h1></div><br>
+
+                <div class="section section-update-message">
+                    
+<!-- welcome message class to for the left yellow margin. make sure the Yellow margin is for the Description -->
+
+<div class="welcome-message  " >
+  <!-- make sure to use the indent class for 'p' tags -->
+<p  class="indent">  <p  class="indent">In the <a  target="_blank" href="Understanding_Recyclerview.html">previous</a> Tutorial, we learned how a AsyncTask works. Here in this section, we will learn how to implement AsyncTask by building a simple app as shown in the video above.<br></p>
+
+
+<h3>Creating Project :</h3>    <p  class="indent">
+
+  <!-- Make sure to use class bold in the mark tag when needed. -->
+                Open Android Studio. Set Application name as <mark class="bold">AsyncTask</mark>.
+                Company domain as <b>com.example.ssame.demo</b>.
+                 Click next keeping the project location in the same location.
+                Now choose the phone and tablet by targeting API 22 and later,
+                 click next and select the <mark class="bold">EmptyActivity</mark> with
+                  Activity name <mark class="bold">MainActivity.java</mark>
+                 and layout name <mark class="bold">activity_main.xml</mark> and click finish.
+
+                                    <br></p>
+                                    
+                                <h3>activity_main.xml </h3>
+
+                                      <p  class="indent  ">
+                                In <mark class="bold">activity_main.xml</mark> layout file,
+                                 change rootview Linearlayout and delete the layout constraints setAttribute if
+                                 present. Add a TetView , Button and a ProgressBar.
+
+                                 Add onClick attribute in the button widget as sartTask Now the Yellow highlighted part
+                                 appeared on the onClick attribute as the startProgress() method is not yet implemented in the
+                                 MainActivity.java press <b>ALT+ENTER(Option + Enter on n Mac)</b> placing the cursor on the highlighted
+                                 text and choose to create 'startTask(View) in the MainActivity.java' to create the method in MainActivity.java.
+                                      </p>
+                                    </div>
+                                   
+                                    <div class="welcome-message">
+   <h3>MainActivity.java  </h3>
+
+                                <p  class="indent ">
+                                  Now in our  <mark class="bold">MainActivity.java</mark> file
+                                  add a variable to store TextView and progressbar.
+
+                          In the oncreate() method, initialize both TextView and Progressbar and make the progressbar invisible.
+                                </p>
+
+                                </div>
+                                      
+                                          
+                                      <div class="welcome-message">
+
+                              <h3>Async class</h3>
+
+                                <p  class="indent">
+                                  create an inner class Async in mainActivity.java
+                      extend Async with AsyncTask.
+                      AsyncTask takes three generic type parameters:</br>
+                      params:we declared void as this AsyncTask does not require any inputs.</br>
+                       progress :we declared Void as the progress is not published.</br>
+
+                      result:  we Declared String as we will update the TextView with
+                      a string when the execution is completed by AsyncTask.
+                                </p>
+                                  </div> 
+
+                              <!-- Before the image the "welcome-message" class should. -->
+                          <img src="Declaring-Async-class.PNG"  class="main-image2" alt="images" width="520px" height="220px"></br>
+
+    <div class="welcome-message">
+
+              <h3>doInBackground()</h3></br>
+                                    <p  class="indent">
+                                      Now implement doInbackground() method.
+                                      Press <b>Alt+Enter(option + Enter on Mac)</b>
+                                      on the red highlighted part where we extended AsyncTask and implement methods click ok.
+                                    The  doInbackground() method is invoked in a background thread. Hence, we can do any long operation.
+                                    Here we implement the code to execute which makes the thread to sleep for certain time.</br>
+
+                                      In the doInBackground() method Generate a random integer between 1 to 20.Multiply that by 150.
+                                      The total is the amount of time we put our current
+                                      thread to sleep using <mark class="bold">Thread.sleep()</mark>
+
+                                <br><br></p>
+</div>
+                                    
+
+
+  <div class="welcome-message">
+                                <h3>onPostExecute()</h3>
+                                <p class="indent">when doInbackground() completes the return value is passed to onPostExecute() callback.
+                                  onPostExecute() method publishes results on the UI.
+                                override onPostExecute() method by pressing <b>ctrl+O</b>. Now Here onPostExecute() takes a string argument and display that string in textView.</p>
+
+
+</div>
+
 
   <div class="welcome-message">
      <h3>MainActivity.java</h3>
@@ -55,9 +543,9 @@
 
               <font  size="4" face="verdana">1.
               YouTubePlayer.PlaybackEventListener<br></font>
-              <p  class="indent col-sm-11 col-md-12">This interface is invoked when there is a video playback event.</p>
+              <p  class="indent ">This interface is invoked when there is a video playback event.</p>
                 <font  size="4" face="verdana"> 2.YouTubePlayer.PlayerStateChangeListener</font>
-                <p  class="indent col-sm-11 col-md-12">This interface is invoked when there is a change in their player state.</p>
+                <p  class="indent ">This interface is invoked when there is a change in their player state.</p>
 
 
 
@@ -69,3 +557,930 @@
 
 
   </div>
+
+</br>
+
+
+   <h3><b>MainActivity.java FullCode</b></h3>
+
+
+<!-- make sure to uplaod the code in <pre> tag -->
+
+<pre>
+
+  <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ssame.asynctask">
+
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity android:name=".MainActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        >
+      <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+
+          <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+</application>
+
+</manifest>
+
+
+</pre>
+
+
+<div class="welcome-message">
+   <h3>Optional Code:</h3>
+                                  <p class="indent">when running our app if the device is rotated we
+                                    can observe that app resitting to initial Text and progress stops.
+                                    So to restore the data on rotate add following code in the manifest file.
+                                    In the</br> <mark class="bold">&lt;activity android:name=".MainActivity"&gt;</mark>
+
+
+                                      </div>
+
+
+
+</div>
+ 
+<div class="container ">
+
+  <section class="welcome">
+    <figure class="welcome__profile-img">
+     <a href="-profile.html"> <img  src="girl.png" /></a>
+    </figure>
+    
+   
+   
+  </section>
+
+</div>
+                         
+   
+
+
+    <div class="course-message">
+              
+<svg class="sssvvg" width="150px" height="150px" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183 184.5"><title>Eidk enlightening</title>
+
+
+ 
+
+    <g id="_Group_" data-name="&lt;Group&gt;"><path id="_Compound_Path_" data-name="&lt;Compound Path&gt;" d="M57.8,240.7,56,246.5" transform="translate(-56 -62)"/><path id="_Path_" data-name="&lt;Path&gt;" d="M196.7,85.9a1.2,1.2,0,0,1-1.2-1.3V63.3a1.2,1.2,0,1,1,2.4,0V84.6a1.2,1.2,0,0,1-1.2,1.3" transform="translate(-56 -62)" style="fill:#ffd342"/><path id="_Path_2" data-name="&lt;Path&gt;" d="M227.5,93.9h-.7a1.4,1.4,0,0,1-.4-1.7l10.4-18.3a1.2,1.2,0,0,1,1.6-.4,1.4,1.4,0,0,1,.4,1.7L228.4,93.4a.9.9,0,0,1-.9.6" transform="translate(-56 -62)" style="fill:#ffd342"/><path id="_Path_3" data-name="&lt;Path&gt;" d="M163,93.9a1.6,1.6,0,0,1-1.1-.6L151.5,75.1a1.2,1.2,0,0,1,.4-1.7,1.1,1.1,0,0,1,1.6.4L164,92.1a1.2,1.2,0,0,1-.4,1.7.8.8,0,0,1-.5.1" transform="translate(-56 -62)" style="fill:#ffd342"/><path id="_Path_4" data-name="&lt;Path&gt;" d="M193.7,107.8v88.9H180.5v-9a3.2,3.2,0,0,0-1.6-2.8c-11.9-7-20-20.5-20-36.1s8.7-30.2,21.5-37A41.5,41.5,0,0,1,193.7,107.8Z" transform="translate(-56 -62)" style="fill:#ffd342;stroke:#000;stroke-miterlimit:10;stroke-width:2.15339994430542px"/><path id="_Path_5" data-name="&lt;Path&gt;" d="M203.7,219.2H186.8a2.6,2.6,0,0,1-2.5-2.7h0a2.6,2.6,0,0,1,2.5-2.7h16.9a2.6,2.6,0,0,1,2.5,2.7h0A2.7,2.7,0,0,1,203.7,219.2Z" transform="translate(-56 -62)"/><path id="_Path_6" data-name="&lt;Path&gt;" d="M208.6,205H181.8a1.9,1.9,0,0,1-1.8-2v-1.4a1.9,1.9,0,0,1,1.8-2h26.8a1.9,1.9,0,0,1,1.8,2V203A1.9,1.9,0,0,1,208.6,205Z" transform="translate(-56 -62)"/><path id="_Path_7" data-name="&lt;Path&gt;" d="M207.4,212H183.1a1.8,1.8,0,0,1-1.7-1.8v-1.5a1.8,1.8,0,0,1,1.7-1.8h24.3a1.8,1.8,0,0,1,1.7,1.8v1.5A1.8,1.8,0,0,1,207.4,212Z" transform="translate(-56 -62)"/><line id="_Path_8" data-name="&lt;Path&gt;" x1="145.1" y1="48.1" x2="154.5" y2="48.1" style="fill:none"/><rect id="_Path_9" data-name="&lt;Path&gt;" x="145.1" y="47.5" width="9.2" height="1.13"/><ellipse id="_Path_10" data-name="&lt;Path&gt;" cx="153.7" cy="48.1" rx="2.1" ry="2.2"/><path id="_Compound_Path_2" data-name="&lt;Compound Path&gt;" d="M209.7,112.9a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,209.7,112.9Zm0-4.4a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,209.7,108.5Z" transform="translate(-56 -62)"/><line id="_Path_11" data-name="&lt;Path&gt;" x1="156.3" y1="48.1" x2="147.1" y2="48.1" style="fill:none"/><rect id="_Path_12" data-name="&lt;Path&gt;" x="147.1" y="47.5" width="9.2" height="1.13"/><line id="_Path_13" data-name="&lt;Path&gt;" x1="145.1" y1="57.2" x2="162.7" y2="57.2" style="fill:none"/><rect id="_Path_14" data-name="&lt;Path&gt;" x="145.1" y="56.7" width="17.6" height="1.13"/><ellipse id="_Path_15" data-name="&lt;Path&gt;" cx="161.9" cy="57.2" rx="2.1" ry="2.2"/><path id="_Compound_Path_3" data-name="&lt;Compound Path&gt;" d="M217.9,122a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,217.9,122Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,217.9,117.5Z" transform="translate(-56 -62)"/><line id="_Path_16" data-name="&lt;Path&gt;" x1="145.1" y1="66.4" x2="170.8" y2="66.4" style="fill:none"/><rect id="_Path_17" data-name="&lt;Path&gt;" x="145.1" y="65.8" width="25.8" height="1.13"/><ellipse id="_Path_18" data-name="&lt;Path&gt;" cx="170.1" cy="66.4" rx="2.1" ry="2.2"/><path id="_Compound_Path_4" data-name="&lt;Compound Path&gt;" d="M226.1,131.2a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,226.1,131.2Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.6,1.6,0,0,0,226.1,126.7Z" transform="translate(-56 -62)"/><line id="_Path_19" data-name="&lt;Path&gt;" x1="145.1" y1="75.5" x2="177.3" y2="75.5" style="fill:none"/><rect id="_Path_20" data-name="&lt;Path&gt;" x="145.1" y="74.8" width="32.2" height="1.13"/><ellipse id="_Path_21" data-name="&lt;Path&gt;" cx="176.7" cy="75.5" rx="2.1" ry="2.2"/><path id="_Compound_Path_5" data-name="&lt;Compound Path&gt;" d="M232.7,140.2a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,232.7,140.2Zm0-4.4a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,232.7,135.8Z" transform="translate(-56 -62)"/><ellipse id="_Path_22" data-name="&lt;Path&gt;" cx="156.3" cy="75.5" rx="2.1" ry="2.2"/><path id="_Compound_Path_6" data-name="&lt;Compound Path&gt;" d="M212.3,140.2a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,212.3,140.2Zm0-4.4a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,212.3,135.8Z" transform="translate(-56 -62)"/><line id="_Path_23" data-name="&lt;Path&gt;" x1="145.1" y1="84.5" x2="179.2" y2="84.5" style="fill:none"/><rect id="_Path_24" data-name="&lt;Path&gt;" x="145.1" y="84" width="34.1" height="1.13"/><ellipse id="_Path_25" data-name="&lt;Path&gt;" cx="178.5" cy="84.5" rx="2.1" ry="2.3"/><path id="_Compound_Path_7" data-name="&lt;Compound Path&gt;" d="M234.5,149.3a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,234.5,149.3Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7C236,145.7,235.3,144.8,234.5,144.8Z" transform="translate(-56 -62)"/><ellipse id="_Path_26" data-name="&lt;Path&gt;" cx="164.8" cy="84.5" rx="2.1" ry="2.3"/><path id="_Compound_Path_8" data-name="&lt;Compound Path&gt;" d="M220.8,149.3a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,220.8,149.3Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,220.8,144.8Z" transform="translate(-56 -62)"/><line id="_Path_27" data-name="&lt;Path&gt;" x1="145.1" y1="93.7" x2="177.3" y2="93.7" style="fill:none"/><rect id="_Path_28" data-name="&lt;Path&gt;" x="145.1" y="93.1" width="32.2" height="1.13"/><ellipse id="_Path_29" data-name="&lt;Path&gt;" cx="176.7" cy="93.7" rx="2.1" ry="2.3"/><path id="_Compound_Path_9" data-name="&lt;Compound Path&gt;" d="M232.7,158.5a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,232.7,158.5Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,232.7,154Z" transform="translate(-56 -62)"/><ellipse id="_Path_30" data-name="&lt;Path&gt;" cx="161.2" cy="93.7" rx="2.1" ry="2.3"/><path id="_Compound_Path_10" data-name="&lt;Compound Path&gt;" d="M217.2,158.5a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,217.2,158.5Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.6,1.6,0,0,0,217.2,154Z" transform="translate(-56 -62)"/><line id="_Path_31" data-name="&lt;Path&gt;" x1="145.1" y1="102.8" x2="169.8" y2="102.8" style="fill:none"/><rect id="_Path_32" data-name="&lt;Path&gt;" x="145.1" y="102.2" width="24.6" height="1.13"/><ellipse id="_Path_33" data-name="&lt;Path&gt;" cx="169" cy="102.8" rx="2.1" ry="2.3"/><path id="_Compound_Path_11" data-name="&lt;Compound Path&gt;" d="M225,167.6a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,225,167.6Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.6,1.6,0,0,0,225,163.1Z" transform="translate(-56 -62)"/><line id="_Path_34" data-name="&lt;Path&gt;" x1="145.1" y1="111.8" x2="165.8" y2="111.8" style="fill:none"/><rect id="_Path_35" data-name="&lt;Path&gt;" x="145.1" y="111.2" width="20.7" height="1.13"/><rect id="_Path_36" data-name="&lt;Path&gt;" x="145.1" y="47.5" width="1.1" height="82.41"/><ellipse id="_Path_37" data-name="&lt;Path&gt;" cx="165" cy="111.8" rx="2.1" ry="2.3"/><path id="_Compound_Path_12" data-name="&lt;Compound Path&gt;" d="M221,176.6a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,221,176.6Zm0-4.4a1.7,1.7,0,1,0,1.6,1.7A1.6,1.6,0,0,0,221,172.2Z" transform="translate(-56 -62)"/><line id="_Path_38" data-name="&lt;Path&gt;" x1="145.1" y1="120.9" x2="162" y2="120.9" style="fill:none"/><rect id="_Path_39" data-name="&lt;Path&gt;" x="145.1" y="120.4" width="16.9" height="1.13"/><ellipse id="_Path_40" data-name="&lt;Path&gt;" cx="161.2" cy="120.9" rx="2.1" ry="2.3"/><path id="_Compound_Path_13" data-name="&lt;Compound Path&gt;" d="M217.2,185.8a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,217.2,185.8Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,217.2,181.3Z" transform="translate(-56 -62)"/><line id="_Path_41" data-name="&lt;Path&gt;" x1="145.1" y1="130.1" x2="154.5" y2="130.1" style="fill:none"/><rect id="_Path_42" data-name="&lt;Path&gt;" x="145.1" y="129.5" width="9.2" height="1.13"/><ellipse id="_Path_43" data-name="&lt;Path&gt;" cx="153.7" cy="130.1" rx="2.1" ry="2.3"/><path id="_Compound_Path_14" data-name="&lt;Compound Path&gt;" d="M209.7,194.9a2.8,2.8,0,1,1,2.6-2.8A2.7,2.7,0,0,1,209.7,194.9Zm0-4.5a1.7,1.7,0,1,0,1.6,1.7A1.7,1.7,0,0,0,209.7,190.4Z" transform="translate(-56 -62)"/></g>
+
+
+<defs>
+<linearGradient id="test">
+<stop offset="0%" stop-color="#E85A37"/>
+<stop offset="100%" stop-color="#E85A37"/>
+</linearGradient>
+
+</defs>
+ <g transform=" matrix(0.866, -0.40, 0.95, 0.433, 148, 70)">
+    <path d="M 2,70 A 65,70 0 0,0 65,0 5,5 0 0,1 75,0 75,70 0 0,1 0,70Z" fill="#fff" stroke="url(#test)">
+      <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="1s" repeatCount="indefinite" />
+    </path>
+  </g>
+</svg>
+            <div class="message-content" aria-live="polite">
+                <div class="message-header">Share if your friends Dont know.</div>Make people learn for free. That is what we are working on.  <div class="row goal-options-container"><h2  style="margin-top: 15px;"><b>Share</b>: </h2><a  target="_blank" tabindex="0" href="https://wa.me//send?text=https://www.evenidontknow.com/Working-with-AsyncTask.html"  class="goal-option btn-outline-primary" data-choice="certify"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+</a>
+<a target="_blank" href="https://www.linkedin.com/shareArticle?url=https://www.evenidontknow.com/Working-with-AsyncTask.html" tabindex="0" aria-label="Set goal to: Complete the course" class="goal-option btn-outline-primary" data-choice="complete"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i> </a>
+
+<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.evenidontknow.com/Working-with-AsyncTask.html" tabindex="0" aria-label="Set goal to: Explore the course" class="goal-option btn-outline-primary" data-choice="explore"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i> </a></div>
+
+            </div>
+
+        </div>
+
+        <!-- your image -->
+<div class="container ">
+
+  <section class="welcome">
+    <figure class="image-author welcome__profile-img1">
+     <a href="-profile.html"> <img  src="girl.png" /></a>
+<br>    </figure>
+    
+   
+   
+  </section>
+
+</div>
+  
+
+        </div>
+
+
+  <aside class="page-content-secondary course-sidebar siderboy ">
+              
+                <div class="section section-tools"><br>
+                    <h3 class="hd-6 section-title">Course Resources</h3>
+                    <ul class="list-unstyled">
+                            <li class="course-tool">
+                                <a class="course-tool-link"  href="https://github.com/evenidontknow">
+                                    <span style="color: black" class="icon fa fa-github" aria-hidden="true"></span>
+                                    github
+                                </a>
+                            </li>
+                            <li class="course-tool">
+                              
+                                    <span style="color: red" class="icon fa fa-heart" aria-hidden="true"></span>
+                                    Updated on Dec 30th 2017
+                             
+                            </li>
+                    </ul>
+                </div>
+                <div class="section section-upgrade course-home-sidebar-upgrade">
+                    <h3 class="hd hd-6">Donate and help us helping more.</h3>
+                        <img src="Eidk.png" height="50px"  alt="">
+                        <div class="upgrade-container">
+                            <p>
+                                <a class="btn-brand btn-upgrade"
+                                   href="donate-us-evenidontknow.html"
+                                   data-creative="sidebarupsell"
+                                   data-position="sidebar-message">
+                                   Donate 
+                                </a>
+                            </p>
+                 <!--    <p><button  onclick="window.location.href='eidk-mission.html'" class="btn-link btn-small promo-learn-more">Learn More</button></p> -->
+                        </div>
+                </div>
+                <div class="section section-dates">
+                    
+
+
+
+
+
+<h3 class="hd hd-6 handouts-header">Important Things to Know</h3>
+
+  
+    
+
+<div class="date-summary-container">
+    <div class="date-summary date-summary-verified-upgrade-deadline">
+                <span class="hd hd-6 heading">Preparing for Android interview?</span>
+            
+            <p class="description">Check our Falsh cards</p>
+            <span class="date-summary-link">
+                <a href="#">check this</a>
+            </span>
+    </div>
+</div>
+
+    
+
+
+
+
+
+  
+
+
+
+                </div>
+                <div class="section section-handouts">
+                    <h1 class="hd-6 section-title">Related</h1>
+                    <ol><a href="Understanding-of-Android-AsyncTask.html" target="_blank">Understanding Android AsyncTask</a></ol>
+<!-- <ol><a href="#" target="_blank">Python</a></ol> -->
+                </div>
+<hr>
+
+
+  <div class="section section-upgrade course-home-sidebar-upgrade cards">
+                    <h3 class="hd hd-6">Book a slot for Online Android Sections.</h3>
+                      
+                        <div class="upgrade-container">
+                            <p>
+                                <a class="btn-brand btn-upgrade"
+                                     href="Eidk-online-classes.html#androidclasses"
+                                   data-creative="sidebarupsell"
+                                   data-position="sidebar-message">
+                                 Book a Slot
+                                </a>
+                            </p>
+                    <p><button  onclick="window.location.href='eidk-mission.html'" class="btn-link btn-small promo-learn-more">Learn More</button></p>
+                        </div>
+                </div>
+
+
+                <div class="date-summary-container">
+    <div class="date-summary date-summary-end-date">
+                <span class="hd hd-6 heading">Online Android Course Details</span>
+         <p></p>
+            <p class="description">The Android Courses will be One-to-One section where a specific instructor will be designated to each student during the course.</p>
+    </div>
+</div>
+
+
+        </aside>
+
+
+
+    </div>
+        
+
+
+</div>
+
+    
+      
+    </div>
+  
+
+
+
+
+
+
+
+<!-- FOOTER START -->
+<div id="red" class="footer">
+
+  
+
+<div id="secondApp" class="footer"  ng-controller="SecondController">
+  <div class="contain">
+  <div class="col">
+    <h1> {{ EIDKname }}</h1>
+    <ul>
+        <li><a  href="{{urlfotter2}}">{{ EIDKname2 }}</a></li>
+        <li><a  href="{{urlfotter3}}">{{EIDKname3}}</a></li>
+      
+     
+    
+      <li><a  target="_blank" href="{{urlfotter4}}">{{EIDKname4}}</a></li>
+        <li><a  href="{{urlfotter5}}">{{EIDKname5}}</a></li>
+    
+    </ul>
+  </div>
+  <div class="col">
+    <h1>{{EIDKname6}}</h1>
+    <ul>
+    <li><a  href="{{urlfotter7}}">{{EIDKname7}}</a></li>
+        <li><a  href="{{urlfotter8}}">{{EIDKname8}}</a></li>
+            <li><a  href="{{urlfotter9}}">{{EIDKname9}}</a></li>
+                <li><a  href="{{urlfotter10}}">{{EIDKname10}}</a></li>
+    
+      
+   
+   
+    </ul>
+  </div>
+  <div class="col">
+         
+            
+    <h1>{{EIDKname11}}</h1>
+    <ul>
+        <li><a  href="{{urlfotter12}}">{{EIDKname12}}</a></li>
+                   <li><a  href="{{urlfotter13}}">{{EIDKname13}}</a></li>
+                        <li><a  href="{{urlfotter14}}">{{EIDKname14}}</a></li>
+                             <li><a  href="{{urlfotter15}}">{{EIDKname15}}</a></li>
+      
+     
+     
+    </ul>
+  </div>
+ 
+  <div class="col">
+    <h1>{{EIDKname16}}</h1>
+    <ul>
+      <li> <a style="color: #fff;" href="donate-us-evenidontknow.html"><img alt="DONTE-EIDK-EVENIDONTKNOW" src="eidk-evenidontknow-donate.png" width="140px" height="60px"></a></li>
+      
+    </ul>
+  </div>
+  
+  <div class="col social">
+    <h1>{{EIDKname17}}</h1>
+    <ul>
+      <li><a href="{{urlfotter16}}" target="_blank"><img src="{{EIDKname18}}" width="32" style="width: 32px;"></a></li>
+      <li><a href="{{urlfotter17}}" target="_blank"><img src="{{EIDKname19}}" width="32" style="width: 32px;"></a></li>
+      <li><a href="{{urlfotter18}}" target="_blank"><img src="{{EIDKname20}}" width="32" style="width: 32px;"></a></li>
+       <li><a href="{{urlfotter19}}" target="_blank"><img src="{{EIDKname21}}" width="32" style="width: 32px;"></a></li>
+    </ul>
+  </div>
+<div class="clearfix"></div>
+</div>
+</div>
+
+</div>
+<!-- footer end -->
+
+          <a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up glyphicon-chevron-up"></i></a>
+<script type="text/javascript" src="fotterandnav.js"></script>
+
+
+        
+<script>
+function isSecure()
+{
+   return window.location.protocol == 'https:';
+}
+
+function remove(){
+ var frame = document.getElementById("sventeaser");
+ frame.parentNode.removeChild(frame);
+}
+
+if(isSecure()) {
+  document.body.className += ' ' + 'secure';
+
+  document.getElementById("secure-button").style.display = "block";
+  document.getElementById("dummy-image").style.display = "none";
+  remove();
+} else {
+  document.getElementById("dummy-image").style.display = "block";
+   document.getElementById("secure-button").style.display = "none";
+}
+</script>
+
+
+<script >
+$('.quick-add a').click(function() {
+  $('.basket-button').addClass('active');
+  window.setTimeout(function() {
+    $('.basket-button').removeClass('active');
+  }, 500);
+});
+
+$('.category').click(function() {
+  $(this).toggleClass('active');
+  $('.category').toggleClass('hide');
+  $('.subcategory').toggleClass('hide');
+});
+
+$('.menu-button, .overlay, .mobile-menu-button').click(togglemenu);
+$('.search-button').click(function() {
+  togglemenu();
+  $('.search input').focus();
+});
+
+function togglemenu() {
+  $('nav, .overlay').toggleClass('show');
+}
+
+$(".search input").focusin(function() {
+  $('.search').addClass('focus');
+});
+$(".search input").focusout(function() {
+  $('.search').removeClass('focus');
+});
+
+/* Favourite */
+$('.product .fav').click(function() {
+  $(this).toggleClass('active');
+});
+
+/* Info */
+$('.product .info').click(function() {
+  //console.log(viewportWidth)
+
+
+  var isActive = $(this).hasClass('active');
+  //console.log(isActive);
+  if (isActive === true){
+     $(this).removeClass('active');
+     $(this).closest('.product').removeClass('showinfo');
+  } else {
+      if (viewportWidth > 40){
+    $('.product.showinfo').removeClass('showinfo');
+    $('.product .info.active').removeClass('active');
+  }
+     $(this).addClass('active');
+     $(this).closest('.product').addClass('showinfo');
+
+  }
+  productAlignment();
+
+});
+
+
+
+$(document).ready(measureviewport);
+
+function measureviewport() {
+  viewportWidth = $(window).width() / parseFloat($("body").css("font-size"));
+  viewportHeight = $(window).height();
+}
+
+
+
+$(document).ready(sizetoptabs);
+$(window).resize(sizetoptabs);
+
+/* Google Play Style Shopping Links */
+
+function subsubMenu(dataheight) {
+  //console.log(dataheight);
+  var menuHeight = $('.menu-container').height();
+  //console.log(menuHeight);
+  var combined = menuHeight + parseInt(dataheight) + 20;
+  if (combined > 300) {
+    $('.menu-container').height(combined + 'px');
+  } else {
+    $('.menu-container').height('');
+  }
+}
+
+function menuResize(addheight, removeheight) {
+  window.setTimeout(function() {
+    var menuHeight = $('.menu-container').height();
+    if (parseInt(addheight) > 0) {
+      var newHeight = menuHeight + parseInt(addheight) + 20;
+    }
+    if (parseInt(removeheight) > 0) {
+      var newHeight = menuHeight - parseInt(removeheight) - 20;
+    }
+    if (newHeight > 300) {
+      $('.menu-container').height(newHeight + 'px');
+    } else {
+      $('.menu-container').height('');
+      $('nav .after').height('');
+    }
+
+    window.setTimeout(function() {
+      var outerHeight = 0;
+      $('nav > *:visible:not(.after)').each(function() {
+        outerHeight += $(this).outerHeight();
+      });
+      //console.log(outerHeight);
+      var newH = outerHeight + 20;
+      $('nav .after').css({
+        'height': newH + 'px'
+      });
+    }, 200);
+  }, 300);
+
+}
+
+$(document).ready(function() {
+
+  //give height attribute to each sub sub menu for smooth animation
+  $('nav .sub-sub-menu').each(function() {
+    var subsubHeight = $(this).height();
+    $(this).attr('data-height', subsubHeight).css({
+      'height': 0,
+      'padding': 0,
+      'opacity': 0
+    });
+  });
+
+  $('nav .play-menu .sub-menu li.has-sub > a').click(function() {
+    var thisLi = $(this).parent('li');
+    var isOpen = thisLi.hasClass('open');
+
+    if (isOpen === true) {
+      thisLi.addClass('current');
+      var subsubMenu = $('.current.open + .sub-sub-menu');
+      var removeheight = subsubMenu.attr('data-height');
+      subsubMenu.css({
+        'height': 0,
+        'padding': 0,
+        'opacity': 0
+      });
+      thisLi.removeClass('open');
+      thisLi.removeClass('current');
+    } else {
+      thisLi.addClass('current open');
+      var subsubMenu = $('.current.open + .sub-sub-menu');
+      var addheight = subsubMenu.attr('data-height');
+      subsubMenu.css({
+        'height': addheight + 'px',
+        'padding': '',
+        'opacity': ''
+      });
+      thisLi.removeClass('current');
+    }
+
+    menuResize(addheight, removeheight);
+  });
+
+  var link = $('.play-menu > li > a'),
+    expander = $('.show-entries-hover'),
+    container = $('.menu-container'),
+    linkh = 63,
+    pos1 = 0,
+    pos2 = (linkh * 1) + "px",
+    pos3 = (linkh * 2) + "px",
+    pos4 = (linkh * 3) + "px",
+    pos5 = (linkh * 4) + "px",
+    pos6 = (linkh * 5) + "px",
+    left = "-300px"
+  openColour = "rgba(0,0,0,.2)",
+    appsColor = "",
+    moviesColor = "",
+    musicColor = "",
+    booksColor = "",
+    devicesColor = "";
+
+  // Initialization, start positions
+  $('li#home').css('top', pos1);
+  $('li#apps').css('top', pos2);
+  $('li#movies').css('top', pos3);
+  $('li#music').css('top', pos4);
+  $('li#books').css('top', pos5);
+  $('li#devices').css('top', pos6);
+
+  // Click function standard
+  link.each(function() {
+    $(this).on('click', function() {
+      // Remove Background-Color when i click on an unselected item
+      // Hiding is removed for debugging
+      link.not($(this)).parent().addClass('hide');
+      expander.removeClass('hidden');
+      link.not($(this)).children('.menu-entry-text').attr("style", "");
+      // Hide all menus except the right one
+      link.not($(this)).next('.sub-menu').css({
+        'opacity': 0
+      }).addClass('index').removeClass('active');
+      $(this).next('.sub-menu').css({
+        'opacity': 1
+      }).addClass('active');
+
+      // Resize menu-container to fit contents of submenu
+      var activeHeight = $(this).next('.sub-menu').height();
+      var linkHeight = $(this).height();
+      var combined = activeHeight + linkHeight;
+      if (combined > 300) {
+        $('.menu-container, .after').height(combined + 'px');
+      } else {
+        $('.menu-container, .after').height('');
+      }
+
+      // Show the back button
+      $('.show-entries-hover').css('opacity', 1);
+
+      // Changing Background-Color and Position
+      // "Home"
+      // This also resets all menu entries to their initial order
+      if ($(this).children().hasClass('home')) {
+        //console.log("true")
+        expander.addClass('hidden');
+        $(this).parent().css('top', pos1).removeClass('hide').addClass('active');
+        $('#apps').css('top', pos2);
+        $('#movies').css('top', pos3);
+        $('#music').css('top', pos4);
+        $('#books').css('top', pos5);
+        $('#devices').css('top', pos6);
+        $('.open + .sub-sub-menu').css('opacity', 0);
+        $('nav li').removeClass('hide');
+      }
+
+      // "Apps"
+      else if ($(this).children().hasClass('party')) {
+        $('.open + .sub-sub-menu').css('opacity', 1);
+        //$(this).children('.menu-entry-text').css({'background-color' : appsColor,'color' : 'white'});
+        $(this).parent().css('top', pos1).removeClass('hide');
+        $('#home').css('top', pos6);
+        $('#movies').css('top', pos2);
+        $('#music').css('top', pos3);
+        $('#books').css('top', pos4);
+        $('#devices').css('top', pos5);
+        $('.hide').css({
+          'left': left,
+          'opacity': 0,
+          'transition': 'all 0s',
+          '-webkit-transition': 'all 0s',
+          '-moz-transition': 'all 0s'
+        });
+      }
+      // "Movies"
+      else if ($(this).children().hasClass('movies')) {
+        $('.open + .sub-sub-menu').css('opacity', 1);
+        $(this).children('.menu-entry-text').css({
+          'background-color': moviesColor,
+          'color': 'white'
+        });
+        $(this).parent().css('top', pos1).removeClass('hide');
+        $('#home').css('top', pos6);
+        $('#apps').css('top', pos2);
+        $('#music').css('top', pos3);
+        $('#books').css('top', pos4);
+        $('#devices').css('top', pos5);
+        $('.hide').css({
+          'left': left,
+          'opacity': 0,
+          'transition': 'all 0s',
+          '-webkit-transition': 'all 0s',
+          '-moz-transition': 'all 0s'
+        });
+      }
+      // "Music"
+      else if ($(this).children().hasClass('music')) {
+        $('.open + .sub-sub-menu').css('opacity', 1);
+        $(this).children('.menu-entry-text').css({
+          'background-color': musicColor,
+          'color': 'white'
+        });
+        $(this).parent().css('top', pos1).removeClass('hide');
+        $('#home').css('top', pos6);
+        $('#apps').css('top', pos2);
+        $('#movies').css('top', pos3);
+        $('#books').css('top', pos4);
+        $('#devices').css('top', pos5);
+        $('.hide').css({
+          'left': left,
+          'opacity': 0,
+          'transition': 'all 0s',
+          '-webkit-transition': 'all 0s',
+          '-moz-transition': 'all 0s'
+        });
+      }
+      // "Books"
+      else if ($(this).children().hasClass('books')) {
+        $('.open + .sub-sub-menu').css('opacity', 1);
+        $(this).children('.menu-entry-text').css({
+          'background-color': booksColor,
+          'color': 'white'
+        });
+        $(this).parent().css('top', pos1).removeClass('hide');
+        $('#home').css('top', pos6);
+        $('#apps').css('top', pos2);
+        $('#movies').css('top', pos3);
+        $('#music').css('top', pos4);
+        $('#devices').css('top', pos5);
+        $('.hide').css({
+          'left': left,
+          'opacity': 0,
+          'transition': 'all 0s',
+          '-webkit-transition': 'all 0s',
+          '-moz-transition': 'all 0s'
+        });
+      }
+      // "Devices"
+      else if ($(this).children().hasClass('devices')) {
+        $('.open + .sub-sub-menu').css('opacity', 1);
+        $(this).children('.menu-entry-text').css({
+          'background-color': devicesColor,
+          'color': 'white'
+        });
+        $(this).parent().css('top', pos1).removeClass('hide');
+        $('#home').css('top', pos6);
+        $('#apps').css('top', pos2);
+        $('#movies').css('top', pos3);
+        $('#music').css('top', pos4);
+        $('#books').css('top', pos5);
+        $('.hide').css({
+          'left': left,
+          'opacity': 0,
+          'transition': 'all 0s',
+          '-webkit-transition': 'all 0s',
+          '-moz-transition': 'all 0s'
+        });
+      }
+      return false;
+    });
+  });
+
+  // Hide menu when you leave the menu container
+  container.on('mouseleave', function() {
+    $('.show-entries-hover').css('opacity', 1);
+    $('.hide').css({
+      'left': left,
+      'opacity': 0,
+      'transition': '',
+      '-webkit-transition': '',
+      '-moz-transition': ''
+    });
+    $('.index').css('opacity', 1);
+    $('.sub-menu').removeClass('index');
+  })
+
+  // Show the menu when you hover the trigger
+  expander.on('mouseover', function() {
+    $('.show-entries-hover').css('opacity', 0);
+    $('.hide').css({
+      'left': 0,
+      'opacity': 1,
+      'transition': '',
+      '-webkit-transition': '',
+      '-moz-transition': ''
+    });
+    $('.sub-menu').addClass('index').css('opacity', 0);
+
+  });
+});
+
+// Touch Scroll changes
+var lastScrollTops = 0;
+
+function ScrollEnd() {
+  if (viewportWidth <= 32) {
+    var st = $(this).scrollTop();
+    var downBuffer = lastScrollTops + 50;
+    var upBuffer = lastScrollTops - 150;
+    if (st > downBuffer) {
+      //alert("scroll down \nlastScrollTop: "+lastScrollTop+" \nst: "+st+" \ndownBuffer: "+downBuffer);
+      $('.topnav').addClass('hide-tabs');
+    } else if (st === 0) {
+      //alert("top of page \nlastScrollTop: "+lastScrollTop+"\nst: "+st);
+      $('.topnav').removeClass('hide-tabs');
+    } else if (st < upBuffer) {
+      //alert("scroll up \nlastScrollTop: "+lastScrollTop+" \nst: "+st+" \nupBuffer: "+upBuffer);
+      $('.topnav').removeClass('hide-tabs');
+    }
+    lastScrollTops = st;
+  }
+}
+$(window).scroll(function() {
+  clearTimeout($.data(this, 'scrollTimer'));
+  $.data(this, 'scrollTimer', setTimeout(function() {
+    //ScrollEnd();
+  }, 200));
+});
+
+// Change look depending on data-colours
+
+function showStyle() {
+  var colours = $(this).attr('data-colours');
+  if (typeof colours !== typeof undefined && colours !== false) {
+    //showPageStyle(colours);
+    $('head').append('<style id="afterbg">nav .after {background: linear-gradient(226deg,' + colours + ')}</style>');
+    $('nav').addClass('show-after');
+  } else {
+    $('nav').removeClass('show-after');
+  }
+}
+//$('nav a').mouseover(showStyle);
+var styleinuse = false;
+
+function setStyle() {
+  var colours = $(this).attr('data-colours');
+  var buttoncolours = $(this).attr('data-button-colours');
+  if (typeof colours !== typeof undefined && colours !== false) {
+    styleinuse = true;
+    //animate in overlay
+    $('head').append('<style class="colour-after">nav .after, topnav .after, .mobile-menu-button .after {background: linear-gradient(226deg,' + colours + ')}</style>');
+    $('.product .buttons .quick-add a').css('opacity', 0);
+
+    $('nav, .topnav, .mobile-menu-button').addClass('show-after');
+
+    // then change bg after 200ms
+    window.setTimeout(function() {
+      $('head').append('<style class="colour-bg">nav, .topnav, .mobile-menu-button {background: linear-gradient(226deg,' + colours + ')}</style>');
+      $('nav, .topnav, .mobile-menu-button').removeClass('show-after');
+      $('head').append('<style class="colour-buttons">.product .buttons .quick-add a, .mobile-menu-button {background: linear-gradient(226deg,' + buttoncolours + ')}</style>');
+    }, 200);
+
+    window.setTimeout(function() {
+      $('.product .buttons .quick-add a').css('opacity', 1);
+    }, 400);
+  } else {
+    if (styleinuse === true) {
+      $('.colour-after').remove();
+      $('.product .buttons .quick-add a').css('opacity', 0);
+      window.setTimeout(function() {
+        $('.colour-buttons').remove();
+        $('.product .buttons .quick-add a').css('opacity', 1);
+      }, 500);
+
+      //animate in overlay with default menu colours
+      $('nav, .topnav').addClass('show-after');
+
+      // remove inline css and overlay
+      window.setTimeout(function() {
+        $('.colour-bg').remove();
+        $('nav, .topnav').removeClass('show-after');
+      }, 200);
+      styleinuse = false;
+    }
+  }
+}
+$('nav .sub-sub-menu a').click(setStyle);
+
+// Page Transition
+
+// hide all sections apart from home
+$('.content.starwars').css('opacity',1);
+$('.content.home').css({
+  'opacity': 0,
+  'height': 0,
+  'padding': 0
+});
+//$('.content.starwars').css('opacity', 1);
+
+function hasPage() {
+  $('a.active').removeClass('active');
+  $(this).addClass('active');
+  var page = $(this).attr('data-page');
+  if (typeof page !== typeof undefined && page !== false) {
+    //console.log(page);
+
+    $('.content').css('opacity', 0);
+    window.setTimeout(function() {
+      $('.content:not(.' + page + ')').css({
+        'height': 0,
+        'padding': 0
+      });
+      $('.content.' + page).css({
+        'height': '',
+        'padding': '',
+        'opacity': 1
+      });
+      window.scrollTo(0,0);
+      $('.overlay').click();
+    }, 500);
+  }
+}
+$('nav a').click(hasPage);
+
+$(document).ready(productAlignment);
+$(window).resize(productAlignment);
+function productAlignment() {
+  ////////   Remove swatch containers   ///////
+  $(".product").each(function () {
+      var e = $(this).position().top;
+      $(this).attr("data-top", e);
+  });
+
+  // count products AND expanded products (count as 2)
+
+  // work out the grid
+ // console.log(viewportWidth);
+  if (viewportWidth > 77) {
+    if (viewportWidth > 94) {
+    var products = 4
+  } else {
+    var products = 3
+  }
+
+  }
+  //console.log(products);
+
+  // remove swatch containers not needed for image alignment
+  $(".swatch.age, .swatch.colour").closest(".product").each(function () {
+     ThisProductTop = $(this).attr("data-top");
+    $(".product[data-top='" + ThisProductTop + "'] .swatch").addClass("keep");
+  });
+  $(".swatch").not( $( ".swatch.keep" ) ).remove();
+  $(".swatch.keep").removeClass('keep');
+
+}
+</script>
+
+
+<!-- animation navabar -->
+<script>
+
+// Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('.topnav').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('.topnav').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('.topnav').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+
+    lastScrollTop = st;
+}
+</script>
+<script type="text/javascript">
+   function changeCSS(cssFile, cssLinkIndex) {
+
+    var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+    var newlink = document.createElement("link");
+    newlink.setAttribute("rel", "stylesheet");
+    newlink.setAttribute("type", "text/css");
+    newlink.setAttribute("href", cssFile);
+
+    document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+}
+</script>
+
+
+
